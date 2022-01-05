@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "crun-uec",
     "public": "dist",
     "ignore": [
       "firebase.json",
@@ -8,7 +9,7 @@
     ],
     "rewrites": [
       {
-        "source": "/api/*",
+        "source": "/api/**",
         "run": {
           "serviceId": "crun-runner",
           "region": "us-west1"
