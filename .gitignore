@@ -1,0 +1,16 @@
+# modules
+node_modules
+
+# apple filesystem
+.DS_Store
+
+# build artifacts
+dist
+dist-ssr
+
+# sensitive files
+*.local
+*.log
+
+# IDE
+.vscode
