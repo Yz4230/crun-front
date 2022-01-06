@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import Editor from "@monaco-editor/react";
+import { logEvent } from "firebase/analytics";
 import React, { useCallback } from "react";
 import { v1 } from "./api";
 import ExecButton from "./components/ExecButton";
 import SOURCE_DEFAULT from "./default";
+import { analytics } from "./firebase";
 
 const Wrapper = styled.div({
   height: "100vh",
@@ -54,6 +56,9 @@ const App: React.FC = () => {
 
   const onSubmit = useCallback(async () => {
     setExecuting(true);
+    logEvent(analytics, "submit_source", {
+      source,
+    });
     const res = await v1.RunProgramRequest(source);
 
     if (res.compile_output && res.compile_output.exit_code != 0) {
